@@ -13,7 +13,7 @@ def get_weather(city):
     }
 
     try:
-        # Pogoda na teraz
+        # Pogoda rzeczywista
         response = requests.get(API_URL_CURRENT, params=params)
         response.raise_for_status()
         data = response.json()
@@ -32,7 +32,7 @@ def get_weather(city):
 
         print("\nPrognoza co 3 godziny na następne 5 dni:")
         print("=" * 50)
-        for entry in data_forecast["list"][:40]:  # 40 prognoz = 5 dni co 3 godziny
+        for entry in data_forecast["list"][:40]:
             date_time = entry["dt_txt"]
             temp = entry["main"]["temp"]
             description = entry["weather"][0]["description"].capitalize()
